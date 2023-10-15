@@ -1,4 +1,6 @@
 <?php include "../controllers/c_login.php";
+include_once "../controllers/c_menu.php";
+$baca = new c_menu();
 
 $halaman = "menu";
 
@@ -7,8 +9,6 @@ $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
 
-include_once "../controllers/c_menu.php";
-$baca = new c_menu();
 
 include_once "template/header.php";
 include_once "template/sidebar.php"; ?>
@@ -29,19 +29,19 @@ include_once "template/sidebar.php"; ?>
             <br>
             <div class="container-fluid">
                 <div class="row">
-                    <?php foreach($baca->redi() as $read) : ?>
+                    <?php foreach($baca->kopi() as $coffee) : ?>
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <a href="input_kasir.php?id=<?= $read->id ?>">
+                        <a href="input_kasir.php?id=<?= $coffee->id ?>">
                             <div class="card border-left-secondary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">
-                                                <?= $read->menu ?></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= 'Rp ' . number_format($read->harga, 0, '', '.'); ?></div>
+                                                <?= $coffee->kopi ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= 'Rp ' . number_format($coffee->harga, 0, '', '.'); ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <img src="../assets/img/<?= $read->img ?>" width="60px" height="60px" alt="" srcset="">
+                                            <img src="../assets/img/<?= $coffee->img ?>" width="60px" height="60px" alt="" srcset="">
                                         </div>
                                     </div>
                                 </div>

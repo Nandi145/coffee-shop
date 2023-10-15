@@ -14,7 +14,7 @@ if($_GET["aksi"] == "tambah") {
 
     $harga = $jumlah * $price;
 
-    $pesan->insert($id, $pesanan, $nama, $harga, $jumlah, $status, $date, $price);
+    $pesan->insert($id, $pesanan, $nama, $harga, $jumlah, $status, $date, $price, '');
 
     if($pesan) {
         echo "<script> alert('Pesanan telah di tambahkan!');

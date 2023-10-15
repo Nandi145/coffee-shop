@@ -35,12 +35,12 @@ include_once "template/sidebar.php"; ?>
             </div>
 
             <br>
-            <?php foreach ($menu->read($_GET["id"]) as $minu) : ?>
+            <?php foreach ($menu->kopay($_GET["id"]) as $minu) : ?>
                 <form class="user" action="../routers/r_pesanan.php?aksi=tambah" method="post" enctype="multipart/form-data">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <input type="text" name="id" id="id" hidden>
                         <div class="form-group ">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="<?= $minu->menu ?>" placeholder="Coffee" name="menu" readonly>
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="<?= $minu->kopi ?>" placeholder="Coffee" name="menu" readonly>
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nama" name="nama">

@@ -5,7 +5,7 @@ include_once "c_conn.php";
 class c_pesanan {
     public function insert($id, $pesanan, $nama, $harga, $jumlah, $status, $date, $price) {
         $conn = new c_conn();
-        $query = "INSERT INTO pesanan VALUES ('$id', '$pesanan', '$nama', '$harga', '$jumlah', '$status', '$date', '$price')";
+        $query = "INSERT INTO pesanan VALUES ('$id', '$pesanan', '$nama', '$harga', '$jumlah', '$status', '$date', '$price' '')";
         $data = mysqli_query($conn->conn(), $query);
     }
 

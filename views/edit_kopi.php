@@ -1,6 +1,7 @@
 <?php include "../controllers/c_login.php";
 
-$halaman = "register";
+include_once "../controllers/c_kopi.php";
+$cup = new c_kopi();
 
 $data = $_SESSION['data'];
 $nama = $_SESSION['username'] = $data['username'];
@@ -15,41 +16,44 @@ include_once "template/sidebar.php"; ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <div style="text-align: right;">
+        <a href="menu_kopi.php" class="btn btn-dark btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-minus"></i>
+            </span>
+            <span class="text">Kembali</span>
+        </a>
+    </div>
+    <br>
     <!-- Page Heading -->
     <div class="container-fluid">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-1 font-weight-bold text-dark">Register Pegawai</h6>
+                <h6 class="m-1 font-weight-bold text-dark">Tambah Kopi</h6>
             </div>
 
             <br>
-            <form class="user" action="../routers/r_login.php?aksi=register" method="post" enctype="multipart/form-data">
+            <form class="user" action="../routers/r_kopi.php?aksi=update_kopi" method="post" enctype="multipart/form-data">
                 <div class="col-sm-12 mb-3 mb-sm-0">
-                    <input type="text" name="id" id="id" hidden>
-                    <div class="form-group ">
-                        <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control form-control-user" id="exampleInputPassword" placeholder="Email" name="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" name="password">
-                    </div>
-
-                    <div class="form-group col-sm-10 mb-5 mb-sm-3">
-                        <select name="role" id="role" class="select-control select-control-user col-sm-2">
-                            <option value="kasir">Kasir</option>
-                            <option value="barista">Barista</option>
-                            <option value="admin">Admin</option>
-                        </select>
-                    </div>
-                <button type="submit" class="btn btn-dark btn-user btn-block">Daftarkan</button>
+                    <?php foreach ($cup->edit($_GET['id']) as $edit) : ?>
+                        <input type="text" name="id" id="id" hidden value="<?= $edit->id ?>">
+                        <div class="form-group ">
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nama Kopi" name="kopi" value="<?= $edit->kopi ?>">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Harga" name="harga" value="<?= $edit->harga ?>">
+                        </div>
+                        <div class="form-group ml-2">
+                            <input type="file" class="file-control file-control-user" id="exampleInputPassword" name="p_kopi" value="<?= $edit->img ?>">
+                        </div>
+                        <button type="submit" class="btn btn-secondary btn-user btn-block">Tambah Menu</button>
+                    <?php endforeach; ?>
+                </div>
+                <hr>
+            </form>
         </div>
-        <hr>
-        </form>
     </div>
-</div>
 </div>
 <!-- /.container-fluid -->
 
