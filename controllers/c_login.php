@@ -1,7 +1,7 @@
 <?php
 
-include_once "c_conn.php";
 session_start();
+include_once "c_conn.php";
 
 class c_login
 {

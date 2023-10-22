@@ -22,6 +22,16 @@ class c_menu {
         }
         return $rows;
     }
+
+    public function dessert() {
+        $conn = new c_conn();
+        $query = "SELECT * FROM dessert ORDER BY id DESC";
+        $data = mysqli_query($conn->conn(), $query);
+        while($row = mysqli_fetch_object($data)) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
 }
 
 

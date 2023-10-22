@@ -17,8 +17,15 @@ include_once "template/sidebar.php";
 ?>
 
 <div class="container-fluid">
-
     <!-- Page Heading -->
+    <div style="text-align: right;" class="mb-4">
+        <a href="menu_admin.php" class="btn btn-dark btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-minus"></i>
+            </span>
+            <span class="text">Kembali</span>
+        </a>
+    </div>
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -59,7 +66,7 @@ include_once "template/sidebar.php";
                                 </td>
                                 <td>
                                     <a href="edit_kopi.php?id=<?= $read->id ?>">EDIT</a> |
-                                    <a href="../routers/r_kopi.php?id=<?= $read->id ?>&aksi=delete_kopi">DELETE</a>
+                                    <a href="../routers/r_kopi.php?id=<?= $read->id ?>&aksi=delete_kopi" onclick="return confirm('Yakin ingin menghapus menu ini?')">DELETE</a>
                                 </td>
                                 <?php $i++; ?>
                             </tr>
@@ -70,16 +77,7 @@ include_once "template/sidebar.php";
         </div>
     </div>
     <!-- DataTales Example -->
-
 </div>
-</div>
-</div>
-
-</div>
-<!-- /.container-fluid -->
-
-</div>
-<!-- End of Main Content -->
 
 <!-- Footer -->
 <footer class="sticky-footer bg-white">

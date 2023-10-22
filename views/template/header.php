@@ -1,3 +1,10 @@
+<?php 
+
+// session_start();
+include_once ("validasi.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,4 +30,5 @@
     <!-- Custom styles for this page -->
     <link href="../assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <link rel="shortcut icon" href="../assets/img/beans3.png" type="image/x-icon">
 </head>

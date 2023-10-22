@@ -128,6 +128,10 @@
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
+                                <a class="dropdown-item" href="../routers/r_login.php?aksi=logout">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ganti Password
+                                </a>
                             </div>
                         </li>
 

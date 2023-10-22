@@ -22,7 +22,7 @@ include_once "template/sidebar.php"; ?>
 
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 mb-4 mt-4 mr-5" >
+                    <div class="col-xl-3 col-md-6 mb-4 mt-4 " >
                         <a href="menu_kopi.php">
                             <div class="card border-left-secondary shadow h-100 py-2">
                                 <div class="card-body">
@@ -38,8 +38,24 @@ include_once "template/sidebar.php"; ?>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xl-3 col-md-6 mb-4 mt-4 mr-5 ml-5">
-                        <a href="">
+                    <div class="col-xl-3 col-md-6 mb-4 mt-4" >
+                        <a href="menu_drink.php">
+                            <div class="card border-left-secondary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">DRINKS</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <img src="../assets/img/orange.jpg" width="60px" height="60px" alt="" srcset="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4 mt-4">
+                        <a href="menu_launch.php">
                             <div class="card border-left-secondary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -54,8 +70,8 @@ include_once "template/sidebar.php"; ?>
                             </div>
                         </a>
                     </div>
-                    <div class="col-xl-3 col-md-6 mb-4 mt-4 mr-5 ml-5">
-                        <a href="">
+                    <div class="col-xl-3 col-md-6 mb-4 mt-4">
+                        <a href="menu_dessert.php">
                             <div class="card border-left-secondary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -63,7 +79,7 @@ include_once "template/sidebar.php"; ?>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">DESSERT</div>
                                         </div>
                                         <div class="col-auto">
-                                            <img src="../assets/img/Cappuccino.jpg" width="60px" height="60px" alt="" srcset="">
+                                            <img src="../assets/img/Croffles (Croissant Waffles).jpg" width="60px" height="60px" alt="" srcset="">
                                         </div>
                                     </div>
                                 </div>
