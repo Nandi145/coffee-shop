@@ -2,11 +2,11 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_cair.php";
-$baca = new c_cair();
+include_once "../controllers/c_berat.php";
+$baca = new c_berat();
 
 
-$halaman = "konfirmasi";
+$halaman = "konfirmasi_dessert";
 
 $data = $_SESSION['data'];
 $id = $_SESSION['id'] = $data['id'];
@@ -54,15 +54,14 @@ include_once "template/sidebar.php";
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
-                    <?php 
-                    $i = 1;
-                    foreach ($baca->read() as $read) : ?>
-                        <?php if ($read->status == 'Dibuat' & $read->jenis == 'KOPI') : ?>
+                    <?php foreach ($baca->read() as $read) : ?>
+                        <?php if ($read->status == 'Dibuat' & $read->jenis == 'DESSERT') : ?>
                             <tbody>
                                 <tr>
+                                    <?php $i = 1; ?>
                                     <td><?= $i  ?></td>
                                     <td><?= $read->date ?></td>
-                                    <td><?= $read->cair ?></td>
+                                    <td><?= $read->berat ?></td>
                                     <td><?= $read->nama ?></td>
                                     <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
                                     <td><?= $read->jumlah ?></td>
@@ -72,15 +71,15 @@ include_once "template/sidebar.php";
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="../routers/r_cair.php?id=<?= $read->id ?>&jenis=<?= $read->jenis ?>&aksi=cetak_cair" onclick="return confirm('Sudah membuat pesanan ini?')" class="btn btn-warning btn-circle btn-sm">
+                                        <a href="../routers/r_berat.php?id=<?= $read->id ?>&jenis=<?= $read->jenis ?>&aksi=cetak_berat" onclick="return confirm('Sudah membuat pesanan ini?')" class="btn btn-warning btn-circle btn-sm">
                                             <i class="fas fa-check"></i>
                                         </a>
                                     </td>
                                     
+                                    <?php $i++ ?>
                                 </tr>
                             </tbody>
                             <?php endif; ?>
-                            <?php $i++ ?>
                     <?php endforeach; ?>
                 </table>
             </div>

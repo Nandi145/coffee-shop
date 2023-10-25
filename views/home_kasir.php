@@ -7,6 +7,7 @@ $halaman = "kasir";
 
 $data = $_SESSION['data'];
 $nama = $_SESSION['username'] = $data['username'];
+$id = $_SESSION['id'] = $data['id'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
 

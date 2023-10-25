@@ -1,4 +1,6 @@
 <?php include "../controllers/c_login.php";
+include "../controllers/c_menu.php";
+$menu = new c_menu();
 
 $halaman = "input_kasir";
 
@@ -17,7 +19,7 @@ include_once "template/sidebar.php"; ?>
 <div class="container-fluid">
 
     <div style="text-align: right;">
-        <a href="menu_dessert.php" class="btn btn-dark btn-icon-split">
+        <a href="menu.php" class="btn btn-dark btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-minus"></i>
             </span>
@@ -30,27 +32,34 @@ include_once "template/sidebar.php"; ?>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-1 font-weight-bold text-dark">Tambah Dessert</h6>
+                <h6 class="m-1 font-weight-bold text-dark">Tambah Data Barang</h6>
             </div>
 
             <br>
-                <form class="user" action="../routers/r_dessert.php?aksi=tambah_dessert" method="post" enctype="multipart/form-data">
+            <?php foreach ($menu->kopay($_GET["id"]) as $minu) : ?>
+                <form class="user" action="../routers/r_cair.php?aksi=tambah" method="post" enctype="multipart/form-data">
                     <div class="col-sm-12 mb-3 mb-sm-0">
                         <input type="text" name="id" id="id" hidden>
                         <div class="form-group ">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nama Dessert" name="dessert">
+                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" value="<?= $minu->kopi ?>" placeholder="Coffee" name="cair" readonly>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Harga" name="harga">
+                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Nama" name="nama">
                         </div>
-                        
-                        <div class="form-group ml-2">
-                            <input type="file" class="file-control file-control-user" id="exampleInputPassword" name="p_dessert">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Harga" value="<?= $minu->harga ?>" name="harga_satuan" readonly>
                         </div>
-                        <button type="submit" class="btn btn-secondary btn-user btn-block">Tambah Menu</button>
+                        <div class="form-group">
+                            <input type="number" class="form-control form-control-user" id="exampleInputPassword" placeholder="Jumlah" name="tambah">
+                        </div>
+                        <input type="text" name="status" id="status" value="Dibuat" hidden>
+                        <input type="text" name="date" id="date" value="<?= date('d-M-Y') ?>" hidden>
+                        <input type="text" name="jenis" id="jenis" value="KOPI" hidden>
+                        <button type="submit" class="btn btn-secondary btn-user btn-block">Tambah Pesanan</button>
                     </div>
                     <hr>
                 </form>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

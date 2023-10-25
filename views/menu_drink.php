@@ -6,6 +6,7 @@ include_once "../controllers/c_drink.php";
 $baca = new c_drink();
 
 $data = $_SESSION['data'];
+$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
@@ -65,7 +66,7 @@ include_once "template/sidebar.php";
                                     <img src="../assets/img/<?= $read->img ?>" width="60px" height="60px" alt="" srcset="">
                                 </td>
                                 <td>
-                                    <a href="edit_drink.php?id=<?= $read->id ?>" class="btn btn-warning btn-circle btn-sm">
+                                    <a href="edit_drink.php?id=<?= $read->id ?>" class="btn btn-warning btn-circle btn">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                     <a href="../routers/r_drink.php?id=<?= $read->id ?>&aksi=delete_drink" onclick="return confirm('Yakin ingin menghapus menu ini?')" class="btn btn-danger btn-circle btn-sm">

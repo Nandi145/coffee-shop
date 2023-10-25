@@ -2,8 +2,8 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_selesai.php";
-$baca = new c_selesai();
+include "../controllers/c_berat.php";
+$baca = new c_berat();
 
 include_once "template/header.php";
 
@@ -14,46 +14,23 @@ include_once "template/header.php";
 
     <!-- Page Heading -->
 
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Pesanan</th>
-                        <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Jumlah</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Pesanan</th>
-                        <th>Nama</th>
-                        <th>Harga</th>
-                        <th>Jumlah</th>
-                    </tr>
-                </tfoot>
-                <?php $i = 1; ?>
-                <?php foreach ($baca->read() as $read) : ?>
-                    <tbody>
-                        <tr>
-                            <td><?= $i; ?></td>
-                            <td><?= $read->pesanan ?></td>
-                            <td><?= $read->nama ?></td>
-                            <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
-                            <td><?= $read->jumlah ?></td>
-
-                            <?php $i++; ?>
-                        </tr>
-                    </tbody>
-                <?php endforeach; ?>
-            </table>
+    <center>
+        <div style="width: 40%;" class="card shadow mb-4 mt-4">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <?php foreach ($baca->struk($_GET["id"]) as $read) : ?>
+                        <div class="card-body">
+                            <h1 class="mb-3"><?= $read->berat ?></h1>
+                            <h5 style="text-align: left;"><?= $read->date ?></h5>
+                            <h5 style="text-align: left;"><?= number_format($read->harga_satuan, 0, '', '.') . ' IDR'; ?></h5>
+                            <h5 style="text-align: left;"><?= $read->nama ?></h5>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<!-- DataTales Example -->
+    </center>
+    <!-- DataTales Example -->
 
 </div>
 </div>

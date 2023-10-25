@@ -2,11 +2,10 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_cair.php";
-$baca = new c_cair();
+include "../controllers/c_berat.php";
+$baca = new c_berat();
 
-
-$halaman = "konfirmasi";
+$halaman = "print_launch";
 
 $data = $_SESSION['data'];
 $id = $_SESSION['id'] = $data['id'];
@@ -49,38 +48,39 @@ include_once "template/sidebar.php";
                             <th>Pesanan</th>
                             <th>Nama</th>
                             <th>Harga</th>
-                            <th>Jumlahr</th>
+                            <th>Jumlah</th>
                             <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
-                    <?php 
-                    $i = 1;
-                    foreach ($baca->read() as $read) : ?>
-                        <?php if ($read->status == 'Dibuat' & $read->jenis == 'KOPI') : ?>
+                    <?php $i = 1; ?>
+                    <?php foreach ($baca->read() as $read) : ?>
+                        <?php if ($read->status == 'Dicetak') : ?>
                             <tbody>
                                 <tr>
-                                    <td><?= $i  ?></td>
-                                    <td><?= $read->date ?></td>
-                                    <td><?= $read->cair ?></td>
+                                    <td><?= $i; ?></td>
+                                    <td><?= $read->date; ?></td>
+                                    <td><?= $read->berat ?></td>
                                     <td><?= $read->nama ?></td>
                                     <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
                                     <td><?= $read->jumlah ?></td>
                                     <td>
-                                        <div class="bg-warning text-white p-2 d-inline-block my-1 bg-icon-split btn-sm">
-                                            <span class="text"><?= $read->status ?></span>
-                                        </div>
+                                    <div class="bg-info text-white p-2 d-inline-block my-1 bg-icon-split btn-sm">
+                                        <span class="text"><?= $read->status ?></span>
+                                    </div>
                                     </td>
                                     <td>
-                                        <a href="../routers/r_cair.php?id=<?= $read->id ?>&jenis=<?= $read->jenis ?>&aksi=cetak_cair" onclick="return confirm('Sudah membuat pesanan ini?')" class="btn btn-warning btn-circle btn-sm">
+                                        <a href="../routers/r_cair.php?id=<?= $read->id ?>&pesanan=<?= $read->berat ?>&nama=<?= $read->nama ?>&harga=<?= $read->harga ?>&jumlah=<?= $read->jumlah ?>&date=<?= $read->date ?>&jenis=<?= $read->jenis ?>&aksi=selesai_cair" onclick="return confirm('Selesaikan pesanan ini?')" class="btn btn-info btn-circle btn-sm">
                                             <i class="fas fa-check"></i>
                                         </a>
+                                        <a href="struk_berat.php?id=<?= $read->id ?>" target="_blank" class="btn btn-warning btn-circle btn-sm">
+                                            <i class="fas fa-print"></i>
+                                        </a>
                                     </td>
-                                    
+                                    <?php $i++; ?>
                                 </tr>
                             </tbody>
-                            <?php endif; ?>
-                            <?php $i++ ?>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </table>
             </div>

@@ -2,12 +2,13 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_pesanan.php";
-$baca = new c_pesanan();
+include "../controllers/c_cair.php";
+$baca = new c_cair();
 
 $halaman = "print_pesanan";
 
 $data = $_SESSION['data'];
+$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
@@ -59,7 +60,7 @@ include_once "template/sidebar.php";
                                 <tr>
                                     <td><?= $i; ?></td>
                                     <td><?= $read->date; ?></td>
-                                    <td><?= $read->pesanan ?></td>
+                                    <td><?= $read->cair ?></td>
                                     <td><?= $read->nama ?></td>
                                     <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
                                     <td><?= $read->jumlah ?></td>
@@ -69,7 +70,7 @@ include_once "template/sidebar.php";
                                     </div>
                                     </td>
                                     <td>
-                                        <a href="../routers/r_pesanan.php?id=<?= $read->id ?>&aksi=selesai" onclick="return confirm('Selesaikan pesanan ini?')" class="btn btn-info btn-circle btn-sm">
+                                        <a href="../routers/r_cair.php?id=<?= $read->id ?>&pesanan=<?= $read->cair ?>&nama=<?= $read->nama ?>&harga=<?= $read->harga ?>&jumlah=<?= $read->jumlah ?>&date=<?= $read->date ?>&jenis=<?= $read->jenis ?>&aksi=selesai_cair" onclick="return confirm('Selesaikan pesanan ini?')" class="btn btn-info btn-circle btn-sm">
                                             <i class="fas fa-check"></i>
                                         </a>
                                         <a href="struk.php?id=<?= $read->id ?>" target="_blank" class="btn btn-warning btn-circle btn-sm">

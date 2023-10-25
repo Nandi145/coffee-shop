@@ -2,8 +2,8 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_pesanan.php";
-$baca = new c_pesanan();
+include "../controllers/c_cair.php";
+$baca = new c_cair();
 
 include_once "template/header.php";
 
@@ -20,7 +20,7 @@ include_once "template/header.php";
                 <div class="table-responsive">
                     <?php foreach ($baca->struk($_GET["id"]) as $read) : ?>
                         <div class="card-body">
-                            <h1 class="mb-3"><?= $read->pesanan ?></h1>
+                            <h1 class="mb-3"><?= $read->cair ?></h1>
                             <h5 style="text-align: left;"><?= $read->date ?></h5>
                             <h5 style="text-align: left;"><?= number_format($read->harga_satuan, 0, '', '.') . ' IDR'; ?></h5>
                             <h5 style="text-align: left;"><?= $read->nama ?></h5>

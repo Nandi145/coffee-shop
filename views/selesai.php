@@ -1,13 +1,13 @@
 <?php
-
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_pesanan.php";
-$baca = new c_pesanan();
+include_once "../controllers/c_selesai.php";
+$baca = new c_selesai();
 
 $halaman = "selesai";
 
 $data = $_SESSION['data'];
+$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
@@ -40,41 +40,44 @@ include_once "template/sidebar.php";
                             <th>Nama</th>
                             <th>Harga</th>
                             <th>Jumlah</th>
-                            <th>Status</th>
+                            <th>Jenis</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>No</th>
-                            <th>Tanggal</th>
-                            <th>Pesanan</th>
-                            <th>Nama</th>
-                            <th>Harga</th>
-                            <th>Jumlahr</th>
-                            <th>Status</th>
-                        </tr>
-                    </tfoot>
+                    
                     <?php $i = 1; ?>
-                    <?php foreach ($baca->read() as $read) : ?>
-                        <?php if ($read->status == 'Selesai') : ?>
-                            <tbody>
-                                <tr>
-                                    <td><?= $i; ?></td>
-                                    <td><?= $read->date; ?></td>
-                                    <td><?= $read->pesanan ?></td>
-                                    <td><?= $read->nama ?></td>
-                                    <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
-                                    <td><?= $read->jumlah ?></td>
-                                    <td>
-                                        <div class="bg-success text-white p-2 d-inline-block my-1 bg-icon-split btn-sm">
-                                            <span class="text"><?= $read->status ?></span>
-                                        </div>
-                                    </td>
-                                    <?php $i++; ?>
-                                </tr>
-                            <?php endif; ?>
-                            </tbody>
+                    <tbody>
+                        <?php
+                        error_reporting(0);
+                        foreach ($baca->read() as $read) : ?>
+                            <tr>
+                                <?php $tot += $read->harga; ?>
+                                <td><?= $i; ?></td>
+                                <td><?= $read->date; ?></td>
+                                <td><?= $read->pesanan ?></td>
+                                <td><?= $read->nama ?></td>
+                                <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
+                                <td><?= $read->jumlah ?></td>
+                                <td>
+                                    <div class="<?php if ($read->jenis == "KOPI") {
+                                                    echo "bg-warning text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } elseif ($read->jenis == "MINUMAN") {
+                                                    echo "bg-info text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } elseif ($read->jenis == "DESSERT") {
+                                                    echo "bg-primary text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } elseif ($read->jenis == "LAUNCH") {
+                                                    echo "bg-secondary text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } ?>">
+                                        <span class="text"><?= $read->jenis ?></span>
+                                    </div>
+                                </td>
+                                <?php $i++; ?>
+                            </tr>
                         <?php endforeach; ?>
+                        <tr>
+                            <td style="text-align: center;" colspan="3">Jumlah</td>
+                            <td style="text-align: center;" colspan="4"><?= 'Rp. ' . number_format($tot, 0, '', '.'); ?></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

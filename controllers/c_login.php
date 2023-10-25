@@ -65,4 +65,29 @@ class c_login
         header("Location: ../index.php");
         exit;
     }
+
+    public function ganti($id, $email, $passwordold, $password) {
+        $conn = new c_conn();
+        if(isset($_POST['ganti'])) {
+            $query = "SELECT * FROM user WHERE email = '$email'";
+            $sql = mysqli_query($conn->conn(), $query);
+            $data = mysqli_fetch_assoc($sql);
+            if($data) {
+                if (password_verify($passwordold, $data['password'])) {
+                    $datas = mysqli_query($conn->conn(), "UPDATE user SET password = '$password' WHERE id = $id");
+                    session_destroy();
+                    echo "<script> alert('Password Telah Di Ubah');
+                    document.location.href = '../index.php';
+                    </script>";
+                    exit;
+                }else {
+                    echo "<script> alert('Password lama anda salah');
+                    document.location.href = '../views/home_kasir.php';
+                    </>";
+                }
+            }
+        }
+    }
+
+    
 }

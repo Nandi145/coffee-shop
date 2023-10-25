@@ -4,6 +4,7 @@ include_once "../controllers/c_drink.php";
 $cup = new c_drink();
 
 $data = $_SESSION['data'];
+$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];

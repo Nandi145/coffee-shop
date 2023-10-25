@@ -2,12 +2,13 @@
 
 include "../controllers/c_login.php";
 
-include_once "../controllers/c_pesanan.php";
-$baca = new c_pesanan();
+include_once "../controllers/c_cair.php";
+$baca = new c_cair();
 
 $halaman = "semua";
 
 $data = $_SESSION['data'];
+$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
@@ -36,6 +37,7 @@ include_once "template/sidebar.php";
                             <th>Nama</th>
                             <th>Harga</th>
                             <th>Jumlah</th>
+                            <th>Jenis</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -47,33 +49,35 @@ include_once "template/sidebar.php";
                             <th>Nama</th>
                             <th>Harga</th>
                             <th>Jumlahr</th>
+                            <th>Jenis</th>
                             <th>Status</th>
                         </tr>
                     </tfoot>
                     <?php $i = 1; ?>
                     <?php foreach ($baca->read() as $read) : ?>
-                            <tbody>
-                                <tr>
-                                    <td><?= $i; ?></td>
-                                    <td><?= $read->date; ?></td>
-                                    <td><?= $read->pesanan ?></td>
-                                    <td><?= $read->nama ?></td>
-                                    <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
-                                    <td><?= $read->jumlah ?></td>
-                                    <td>
+                        <tbody>
+                            <tr>
+                                <td><?= $i; ?></td>
+                                <td><?= $read->date; ?></td>
+                                <td><?= $read->cair ?></td>
+                                <td><?= $read->nama ?></td>
+                                <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
+                                <td><?= $read->jumlah ?></td>
+                                <td><?= $read->jenis ?></td>
+                                <td>
                                     <div class="<?php if ($read->status == "Dibuat") {
-                                        echo "bg-warning text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
-                                    }elseif($read->status == "Dicetak") {
-                                        echo "bg-info text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
-                                    }elseif($read->status == "Selesai") {
-                                        echo "bg-success text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
-                                    } ?>"
+                                                    echo "bg-warning text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } elseif ($read->status == "Dicetak") {
+                                                    echo "bg-info text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } elseif ($read->status == "Selesai") {
+                                                    echo "bg-success text-white p-2 d-inline-block my-1 bg-icon-split btn-sm";
+                                                } ?>">
                                         <span class="text"><?= $read->status ?></span>
                                     </div>
-                                    </td>
-                                    <?php $i++; ?>
-                                </tr>
-                            </tbody>
+                                </td>
+                                <?php $i++; ?>
+                            </tr>
+                        </tbody>
                     <?php endforeach; ?>
                 </table>
             </div>

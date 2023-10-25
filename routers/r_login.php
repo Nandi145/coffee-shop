@@ -25,6 +25,15 @@ if($_GET["aksi"] == "register") {
     $login->login($email, $password);
 }elseif ($_GET["aksi"] == "logout") {
     $login->logout();
+}elseif ($_GET['aksi'] == 'ganti_pass') {
+    $id = $_POST['id'];
+    $email = $_POST['email'];
+    $passwordold = $_POST['passwordold'];
+    $password = $_POST['password'];
+
+    $password = password_hash($password, PASSWORD_DEFAULT);
+
+    $login->ganti($id, $email, $passwordold, $password);
 }
 
 

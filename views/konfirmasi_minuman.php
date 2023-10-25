@@ -6,7 +6,7 @@ include_once "../controllers/c_cair.php";
 $baca = new c_cair();
 
 
-$halaman = "konfirmasi";
+$halaman = "konfirmasi_minuman";
 
 $data = $_SESSION['data'];
 $id = $_SESSION['id'] = $data['id'];
@@ -54,12 +54,11 @@ include_once "template/sidebar.php";
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
-                    <?php 
-                    $i = 1;
-                    foreach ($baca->read() as $read) : ?>
-                        <?php if ($read->status == 'Dibuat' & $read->jenis == 'KOPI') : ?>
+                    <?php foreach ($baca->read() as $read) : ?>
+                        <?php if ($read->status == 'Dibuat' & $read->jenis == 'MINUMAN') : ?>
                             <tbody>
                                 <tr>
+                                    <?php $i = 1; ?>
                                     <td><?= $i  ?></td>
                                     <td><?= $read->date ?></td>
                                     <td><?= $read->cair ?></td>
@@ -77,10 +76,10 @@ include_once "template/sidebar.php";
                                         </a>
                                     </td>
                                     
+                                    <?php $i++ ?>
                                 </tr>
                             </tbody>
                             <?php endif; ?>
-                            <?php $i++ ?>
                     <?php endforeach; ?>
                 </table>
             </div>

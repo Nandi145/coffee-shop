@@ -72,23 +72,55 @@
                 <li class="nav-item <?= $halaman == 'print_pesanan' ? 'active' : ''; ?>">
                     <a class="nav-link" href="print_pesanan.php">
                         <i class="fas fa-fw fa-file"></i>
-                        <span>Print</span></a>
+                        <span>Cetak Minuman</span></a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($role == 'kasir') : ?>
+                <li class="nav-item <?= $halaman == 'print_launch' ? 'active' : ''; ?>">
+                    <a class="nav-link" href="print_launch.php">
+                        <i class="fas fa-fw fa-print"></i>
+                        <span>Cetak Makanan</span></a>
                 </li>
             <?php endif; ?>
 
             <?php if ($role == 'barista') : ?>
                 <li class="nav-item <?= $halaman == 'konfirmasi' ? 'active' : ''; ?>">
                     <a class="nav-link" href="konfirmasi.php">
-                        <i class="fas fa-fw fa-check"></i>
-                        <span>Konfirmasi</span></a>
+                        <i class="fas fa-fw fa-coffee"></i>
+                        <span>Kopi</span></a>
                 </li>
             <?php endif; ?>
 
-                <li class="nav-item <?= $halaman == 'semua' ? 'active' : ''; ?>">
-                    <a class="nav-link" href="semua.php">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Status</span></a>
+            <?php if ($role == 'barista') : ?>
+                <li class="nav-item <?= $halaman == 'konfirmasi_minuman' ? 'active' : ''; ?>">
+                    <a class="nav-link" href="konfirmasi_minuman.php">
+                        <i class="fas fa-fw fa-glass-cheers"></i>
+                        <span>Minuman</span></a>
                 </li>
+            <?php endif; ?>
+
+            <?php if ($role == 'barista') : ?>
+                <li class="nav-item <?= $halaman == 'konfirmasi_dessert' ? 'active' : ''; ?>">
+                    <a class="nav-link" href="konfirmasi_dessert.php">
+                        <i class="fas fa-fw fa-cookie-bite"></i>
+                        <span>Dessert</span></a>
+                </li>
+            <?php endif; ?>
+
+            <?php if ($role == 'barista') : ?>
+                <li class="nav-item <?= $halaman == 'konfirmasi_launch' ? 'active' : ''; ?>">
+                    <a class="nav-link" href="konfirmasi_launch.php">
+                        <i class="fas fa-fw fa-utensils"></i>
+                        <span>Launch</span></a>
+                </li>
+            <?php endif; ?>
+
+            <li class="nav-item <?= $halaman == 'semua' ? 'active' : ''; ?>">
+                <a class="nav-link" href="semua.php">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Semua Pesanan</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -124,13 +156,13 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="password.php?id=<?= $id; ?>">
+                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Ganti Password
+                                </a>
                                 <a class="dropdown-item" href="../routers/r_login.php?aksi=logout">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>
-                                <a class="dropdown-item" href="../routers/r_login.php?aksi=logout">
-                                    <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Ganti Password
                                 </a>
                             </div>
                         </li>

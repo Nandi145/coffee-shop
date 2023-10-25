@@ -1,57 +1,55 @@
 <?php include "../controllers/c_login.php";
+include "../controllers/c_menu.php";
+$adid = new c_menu();
 
 $halaman = "input_kasir";
 
 $data = $_SESSION['data'];
-$id = $_SESSION['id'] = $data['id'];
 $nama = $_SESSION['username'] = $data['username'];
 $role = $_SESSION['role'] = $data['role'];
 $photo = $_SESSION['photo'] = $data['photo'];
 
 include_once "template/header.php";
-include_once "template/sidebar.php"; ?>
+?>
 
 <!-- End of Topbar -->
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <div style="text-align: right;">
-        <a href="menu_dessert.php" class="btn btn-dark btn-icon-split">
-            <span class="icon text-white-50">
-                <i class="fas fa-minus"></i>
-            </span>
-            <span class="text">Kembali</span>
-        </a>
-    </div>
-    <br>
+
     <!-- Page Heading -->
     <div class="container-fluid">
         <!-- DataTales Example -->
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-1 font-weight-bold text-dark">Tambah Dessert</h6>
-            </div>
-
+        <center>
             <br>
-                <form class="user" action="../routers/r_dessert.php?aksi=tambah_dessert" method="post" enctype="multipart/form-data">
+            <br>
+            <div class="card shadow mb-4 mt-5" style="width: 20%;" style="height: 20%;">
+                <div class="card-header py-3">
+                    <h6 class="m-1 font-weight-bold text-dark">Ubah Password</h6>
+                </div>
+
+                <br>
+                <form class="user" action="../routers/r_login.php?aksi=ganti_pass" method="post" enctype="multipart/form-data">
+                    <?php foreach($adid->password($_GET['id']) as $edit) : ?>
                     <div class="col-sm-12 mb-3 mb-sm-0">
-                        <input type="text" name="id" id="id" hidden>
+                        <input type="text" name="id" id="id" hidden value="<?= $edit->id ?>">
                         <div class="form-group ">
-                            <input type="text" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nama Dessert" name="dessert">
+                            <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" name="email" value="<?= $edit->email ?>" readonly>
+                        </div>
+                        <div class="form-group ">
+                            <input type="password" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Password Lama" name="passwordold">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Harga" name="harga">
+                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password Baru" name="password">
                         </div>
-                        
-                        <div class="form-group ml-2">
-                            <input type="file" class="file-control file-control-user" id="exampleInputPassword" name="p_dessert">
-                        </div>
-                        <button type="submit" class="btn btn-secondary btn-user btn-block">Tambah Menu</button>
+                        <button type="submit" name="ganti" class="btn btn-secondary btn-user btn-block">Ubah</button>
                     </div>
+                    <?php endforeach; ?>
                     <hr>
                 </form>
-        </div>
+            </div>
+        </center>
     </div>
 </div>
 <!-- /.container-fluid -->
@@ -59,14 +57,6 @@ include_once "template/sidebar.php"; ?>
 </div>
 <!-- End of Main Content -->
 
-<!-- Footer -->
-<footer class="sticky-footer bg-white">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
-        </div>
-    </div>
-</footer>
 <!-- End of Footer -->
 
 </div>
