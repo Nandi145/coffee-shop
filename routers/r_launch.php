@@ -23,7 +23,7 @@ if ($_GET["aksi"] == "tambah_launch") {
     if (in_array($ekstensi, $can) == true) {
         move_uploaded_file($tmp, '../assets/img/' . $img);
 
-        $berat->insert($id, $launch, $harga, $img);
+        $berat->insert($id=0, $launch, $harga, $img);
 
         echo "<script>alert ('Menu Telah Berhasil Di Tambahkan');
         document.location.href = '../views/menu_launch.php';

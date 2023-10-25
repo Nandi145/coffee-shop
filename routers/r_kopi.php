@@ -23,7 +23,7 @@ if ($_GET["aksi"] == "tambah_kopi") {
     if (in_array($ekstensi, $can) == true) {
         move_uploaded_file($tmp, '../assets/img/' . $img);
 
-        $coffee->insert($id, $kopi, $harga, $img);
+        $coffee->insert($id=0, $kopi, $harga, $img);
 
         echo "<script>alert ('Menu Telah Berhasil Di Tambahkan');
         document.location.href = '../views/menu_kopi.php';

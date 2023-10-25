@@ -4,7 +4,7 @@ include_once "c_conn.php";
 class c_dessert {
     public function insert($id, $dessert, $harga, $img) {
         $conn = new c_conn();
-        $query = "INSERT INTO dessert VALUES ('$id', '$dessert', '$harga', '$img')";
+        $query = "INSERT INTO dessert VALUES ($id, '$dessert', '$harga', '$img')";
         $data = mysqli_query($conn->conn(), $query);
     }
 

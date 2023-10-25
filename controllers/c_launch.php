@@ -5,7 +5,7 @@ include_once "c_conn.php";
 class c_launch {
     public function insert($id, $launch, $harga, $img) {
         $conn = new c_conn();
-        $query = "INSERT INTO launch VALUES ('$id', '$launch', '$harga', '$img')";
+        $query = "INSERT INTO launch VALUES ($id, '$launch', '$harga', '$img')";
         $data = mysqli_query($conn->conn(),$query );
     }
 

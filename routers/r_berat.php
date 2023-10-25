@@ -15,7 +15,7 @@ if ($_GET["aksi"] == "tambah") {
 
     $harga = $harga_satuan * $tambah;
 
-    $cuak->insert($id, $berat, $nama, $harga, $tambah, $status, $date, $harga_satuan, $jenis);
+    $cuak->insert($id=0, $berat, $nama, $harga, $tambah, $status, $date, $harga_satuan, $jenis);
 
     echo "<script> alert('Menu telah berhasil ditambahkan');
     document.location.href = '../views/menu.php';

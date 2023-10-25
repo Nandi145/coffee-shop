@@ -23,7 +23,7 @@ if ($_GET["aksi"] == "tambah_minum") {
     if (in_array($ekstensi, $can) == true) {
         move_uploaded_file($tmp, '../assets/img/' . $img);
 
-        $minuman->insert($id, $minum, $harga, $img);
+        $minuman->insert($id=0, $minum, $harga, $img);
 
         echo "<script>alert ('Menu Telah Berhasil Di Tambahkan');
         document.location.href = '../views/menu_drink.php';

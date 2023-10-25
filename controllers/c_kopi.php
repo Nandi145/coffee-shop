@@ -5,7 +5,7 @@ include_once "c_conn.php";
 class c_kopi {
     public function insert($id, $kopi, $harga, $img) {
         $conn = new c_conn();
-        $query = "INSERT INTO kopi VALUES ('$id', '$kopi', '$harga', '$img')";
+        $query = "INSERT INTO kopi VALUES ($id, '$kopi', '$harga', '$img')";
         $data = mysqli_query($conn->conn(), $query);
     }
 

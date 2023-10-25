@@ -5,7 +5,7 @@ include_once "../controllers/c_conn.php";
 class c_cair {
     public function insert($id, $cair, $nama, $harga, $jumlah, $status, $date, $harga_satuan, $jenis) {
         $conn = new c_conn();
-        $query = "INSERT INTO cair VALUES ('$id', '$cair', '$nama', '$harga', '$jumlah', '$status', '$date', '$harga_satuan', '$jenis')";
+        $query = "INSERT INTO cair VALUES ($id, '$cair', '$nama', '$harga', '$jumlah', '$status', '$date', '$harga_satuan', '$jenis')";
         $data = mysqli_query($conn->conn(), $query);
     }
 
@@ -34,7 +34,7 @@ class c_cair {
 
     public function selesai_cair($id, $pesanan, $nama, $harga, $jumlah, $date, $jenis) {
         $conn = new c_conn();
-        $query = "INSERT INTO selesai VALUES ('$id', '$pesanan', '$nama', '$harga', '$jumlah', '$date', '$jenis')";
+        $query = "INSERT INTO selesai VALUES ($id, '$pesanan', '$nama', '$harga', '$jumlah', '$date', '$jenis')";
         $data = mysqli_query($conn->conn(), $query);
     }
 

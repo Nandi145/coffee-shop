@@ -55,7 +55,7 @@ include_once "template/sidebar.php";
                                 <td><?= $read->date; ?></td>
                                 <td><?= $read->pesanan ?></td>
                                 <td><?= $read->nama ?></td>
-                                <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td>
+                                <td><?= 'Rp. ' . number_format($read->harga, 0, '', '.'); ?></td> 
                                 <td><?= $read->jumlah ?></td>
                                 <td>
                                     <div class="<?php if ($read->jenis == "KOPI") {
